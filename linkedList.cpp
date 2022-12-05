@@ -15,9 +15,12 @@ void printList(Node* head){
     }
 }
 
-void push(Node** headref, int newData){
+void pushFront(Node** headref, int newData){
     Node* newNode = new Node();
     newNode->data=newData;
+    if(*headref==NULL){
+        *headref = newNode;
+    }
     newNode->next= *headref;
     *headref=newNode;
 }
@@ -90,7 +93,7 @@ int main(){
 
     head->next=end;
 
-    push(&head, 30);
+    pushFront(&head, 30);
     pushBack(&end, 40);
     pushAt(head, 50, 4);
     pushBack(&end, 60);

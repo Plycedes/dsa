@@ -8,7 +8,8 @@ class Node{
     Node* next;
 };
 
-void printList(Node* head){
+void printList(Node** headref){
+    Node* head = (*headref);
     while(head!=NULL){
         cout<<head->data<<endl;
         head=head->next;
@@ -84,9 +85,23 @@ void deleteNode(Node** headref, int key){
     delete temp;    
 }
 
+void reverseList(Node** headref){
+    Node* current = (*headref);
+    Node* prev = NULL;
+    Node* nextN = NULL;
+
+    while (current != NULL) {
+          nextN = current->next;
+          current->next = prev;
+          prev = current;
+          current = nextN;  
+    }
+    (*headref) = prev;    
+}
+
 int main(){
     Node* head = new Node();
-    Node* end = new Node();   
+    Node* end = new Node();    
     
     head->data=10;
     end->data=20;
@@ -100,7 +115,9 @@ int main(){
 
     deleteNode(&head, 40);
 
-    printList(head);       
+    reverseList(&head);
+    printList(&head);   
+    //cout<<listSize(head);    
     
     return 0;
 }

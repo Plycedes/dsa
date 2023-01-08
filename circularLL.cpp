@@ -112,7 +112,7 @@ int main(){
 
     pushBack(&head, &end, 70);
 
-    //popAt(&head, 3);
+    popAt(&head, 3);
 
     printList(head);
 
